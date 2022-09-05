@@ -1,0 +1,14 @@
+body {
+  margin: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+code {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.notosanskr * {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-style: normal;
+  line-height: 29px;
+}
