@@ -1,5 +1,5 @@
 import * as S from "./styles";
-import { Logo } from "../../assets"
+import { Logo } from "../../assets";
 import { Link } from "react-router-dom";
 
 const Text = [

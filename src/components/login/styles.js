@@ -15,7 +15,7 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: 40px;
-    
+        
 `
 export const LogoImg = styled.img`
     width: 50px;
@@ -82,6 +82,6 @@ export const AskText=styled.span`
 
 export const GoSignup = styled.span`
     color: #024B8D;
-    text-decoration: 
+    
 `
 
