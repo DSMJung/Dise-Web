@@ -15,7 +15,7 @@ function Post() {
     navigate(`/post/${userName}`);
   };
 
-  const preview = previewtext.substring(0, 155) + "....";
+  const preview = previewtext.substring(0, 50) + "...";
 
   return (
     <S.PostBtn
