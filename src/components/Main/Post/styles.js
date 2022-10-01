@@ -51,5 +51,8 @@ export const Text = styled.span`
   display: flex;
   justify-content: space-between;
   text-align: start;
-  ${Font};
+  font-family: ${Font};
+  @media screen and (max-height: 370px) {
+    display: none;
+  } 
 `;

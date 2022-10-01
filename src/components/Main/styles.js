@@ -47,12 +47,13 @@ export const MainHeader = styled.div`
 
 export const Title = styled.p`
   font-size: 60px;
-  font-weight: 500;
+  font-weight: 700;
 `;
 
 export const WritingBtn = styled.button`
   width: 170px;
   height: 58px;
+  font-weight: 600;
   border: 2px solid #4170ff;
   border-radius: 15px;
   background-color: #fff;
@@ -62,7 +63,7 @@ export const WritingBtn = styled.button`
   justify-content: center;
   align-items: center;
   box-shadow: 0 2px 2px 0 rgb(0 0 0 / 30%);
-  font-famil: ${Font};
+  font-family: ${Font};
   > img {
     width: 25px;
     margin-right: 10px;
