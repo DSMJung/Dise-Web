@@ -1,5 +1,5 @@
 import * as S from "./styles"
-import { Cube, Pen, Down, Bell, SettingIcon, Question, DefaultProfile } from "../../../assets";
+import { Cube, Pen, Down, Bell, SettingIcon, Question, DefaultProfile } from "../../assets";
 import { useNavigate } from "react-router-dom";
 
 function Nav() {
