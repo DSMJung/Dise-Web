@@ -7,12 +7,10 @@ function Post() {
   const userName = "UserName";
   const field = Front;
   const title = "대충 제목";
-  const previewtext =
-    "대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용";
-
+  const previewtext = "내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용";
   const navigate = useNavigate();
   const onClickBtn = () => {
-    navigate(`/post/${userName}`);
+  navigate(`/post/${userName}`);
   };
 
   const preview = previewtext.substring(0, 50) + "...";
