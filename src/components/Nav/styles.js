@@ -7,6 +7,9 @@ export const Container = styled.div`
   background:#024B8D;
   padding: 42px 30px;
   overflow: none;
+  @media screen and (max-width: 1000px) {
+   display: none;
+  }
 `
 export const AccountBtns = styled.div`
   display: flex;
