@@ -13,3 +13,5 @@ export { default as Question } from "./icons/question.svg";
 export { default as SettingIcon } from "./icons/setting.svg";
 export { default as DefaultProfile } from "./imgs/defaultProfile.svg";
 export { default as Down2 } from "./icons/Vector 9.svg";
+export { default as Re } from "./icons/remove.svg";
+export { default as More } from "./icons/more.svg";

@@ -5,6 +5,8 @@ import { Writing } from "../../assets";
 import { useNavigate } from "react-router-dom";
 import Nav from "../Nav";
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 function Main() {
   return (
     <div style={{ display: "flex" }}>
