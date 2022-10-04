@@ -43,7 +43,7 @@ export const Title = styled.span`
 
 export const Text = styled.span`
   width: 100%;
-  height: 70%;
+  height: 62%;
   padding-top: 10px;
   box-sizing: border-box;
   color: #c6c6c6;
@@ -51,8 +51,13 @@ export const Text = styled.span`
   display: flex;
   justify-content: space-between;
   text-align: start;
+<<<<<<< Updated upstream
   font-family: ${Font};
   @media screen and (max-height: 370px) {
     display: none;
   } 
+=======
+  ${Font};
+  overflow-y: hidden;
+>>>>>>> Stashed changes
 `;

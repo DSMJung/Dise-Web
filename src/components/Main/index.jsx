@@ -3,12 +3,13 @@ import Post from "./Post/index";
 import Header from "./Header/index";
 import { Writing } from "../../assets";
 import { useNavigate } from "react-router-dom";
+import Nav from "../Nav";
 
 function Main() {
   return (
     <div style={{ display: "flex" }}>
       <S.GlobalStyle />
-      <S.Nav></S.Nav>
+      <Nav />
       <div>
         <Header />
         <S.Body>
