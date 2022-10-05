@@ -15,7 +15,6 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: 40px;
-        
 `
 export const LogoImg = styled.img`
     width: 50px;
@@ -35,6 +34,11 @@ export const Inputs = styled.div`
     font-weight: 700;
     font-size: 20px;
     flex-direction:column;
+    >img{
+        position: absolute;
+        top: 343px;
+        right: 100px;
+    }
 `
 
 export const Input = styled.input`
@@ -42,7 +46,7 @@ export const Input = styled.input`
     height:20px;
     border: none;
     padding-left:10px;
-    padding-rignt:10px;
+    padding-right: 10px;
     border-bottom: solid 1px #023B8d;
     font-weight: 500;
     color: #024B8D;
@@ -52,6 +56,7 @@ export const Input = styled.input`
     }
     font-weight: 700;
     outline : none;
+    font-size: 12px;
 `
 
 export const Btn = styled.button`
@@ -81,7 +86,5 @@ export const AskText=styled.span`
 `
 
 export const GoSignup = styled.span`
-    color: #024B8D;
-    
+    color: #024B8D;   
 `
-

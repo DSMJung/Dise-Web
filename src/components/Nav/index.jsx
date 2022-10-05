@@ -7,16 +7,16 @@ function Nav() {
   return (
     <S.Container>
       {localStorage.getItem('access_token') ? (
-        <S.AccountBtns>
-          <S.AccountBtn onClick={() => navigate("/signup")}>회원가입</S.AccountBtn>
-          <S.AccountBtn onClick={() => navigate("/login")}>로그인</S.AccountBtn>
-        </S.AccountBtns>
-      ) : (
         <S.MyProfileBox>
           <img src={DefaultProfile}></img>
           <>UserName</>
           <span>UserID</span>
         </S.MyProfileBox>
+      ) : (
+        <S.AccountBtns>
+          <S.AccountBtn onClick={() => navigate("/signup")}>회원가입</S.AccountBtn>
+          <S.AccountBtn onClick={() => navigate("/login")}>로그인</S.AccountBtn>
+        </S.AccountBtns>
       )}
       <S.TopicBtns>
         <S.TopicBtn>
