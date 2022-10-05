@@ -21,7 +21,6 @@ export const LogoImg = styled.img`
     height: 73.04px;
     left: 545px;
     top: 217px;
-    
 `
 export const SignupText= styled.div`
     font-size: 30px;
@@ -37,11 +36,12 @@ export const Inputs = styled.div`
     flex-direction:column;
 `
 export const Input = styled.input`
+    font-size: 12px;
     width: 260px;
     height: 20px;
     border: none;
-    padding-left:10px;
-    padding-rignt:10px;
+    padding-left: 10px;
+    padding-right: 10px;
     border-bottom: solid 1px #023B8d;
     font-weight: 500;
     color: #024B8D;
@@ -68,16 +68,26 @@ export const Btn = styled.button`
     }
 `
 export const AskText = styled.div`
-color: #5F7DAF;
-font-weight: bold;
-font-size:12px;
-display: flex;
-justify-content : center;
-gap : 10px;
-font-size:bold;
+    color: #5F7DAF;
+    font-weight: bold;
+    font-size:12px;
+    display: flex;
+    justify-content : center;
+    gap : 10px;
+    font-size:bold;
 `
 export const GoLogin = styled.span`
     color: #024B8D;
-    text-decoration: 
-
+    text-decoration: none;
+`
+export const Eyes = styled.div`
+    >img{
+        width: 16px;
+    }
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 315px;
+    gap: 66px;
+    right: 100px;
 `
