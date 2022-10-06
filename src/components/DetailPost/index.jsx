@@ -9,8 +9,8 @@ function DetailPost() {
       <div style={{ display: "flex" }}>
         <Nav />
         <S.Box>
-          <Header />
           <S.div>
+            <Header />
             <S.Container>
               <div>
                 <S.Title>Html 태그 총정리</S.Title>
