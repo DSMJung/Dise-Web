@@ -3,13 +3,13 @@ const Font = "font-family: 'Noto Sans KR', sans-serif";
 
 export const div = styled.div`
   display: flex;
-  align-items: center;
   padding-top: 30px;
   flex-direction: column;
+  margin-left: 165px;
 `;
 
 export const Container = styled.div`
-  width: 860px;
+  width: 720px;
   height: 500px;
   /* top: 50%;
   left: 50%;
@@ -19,10 +19,11 @@ export const Container = styled.div`
   padding: 20px 30px;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 19px;
   background: #ffffff;
   border: 1px solid #a6a6a6;
   border-radius: 5px;
+  margin-left: 61px;
 `;
 
 export const Nav = styled.div`
@@ -40,7 +41,7 @@ export const Title = styled.div`
   margin-bottom: 10px;
 `;
 
-export const UsernameT= styled.div`
+export const UsernameT = styled.div`
   color: #5f7daf;
   font-style: normal;
   font-weight: 700;
@@ -86,40 +87,39 @@ export const Commenttext = styled.div`
   font-size: 15px;
   line-height: 23px;
   margin-left: 10px;
-  
 `;
 
 export const Profileicorn = styled.img`
   display: flex;
-  width: 25px;
+  width: 30px;
 `;
 
 export const Profile = styled.div`
-display:flex`;
+  display: flex;
+`;
 
 export const Username = styled.div`
-  font-size: 2px;
+  font-size: 14px;
   color: #5f7daf;
   font-style: normal;
   font-weight: 400;
   margin-left: 10px;
   height: 10px;
-  line-height: 10px;
+  line-height: 8px;
 `;
 
-export const Content  = styled.div`
+export const Content = styled.div`
   color: #024b8d;
   font-style: normal;
   font-weight: 700;
-  font-size: 2px;
+  font-size: 12px;
   margin-left: 9px;
   display: flex;
   height: 14px;
-  line-height:19px;
+  line-height: 25px;
 `;
 export const Text = styled.div`
   flex-direction: column;
-  
 `;
 export const Box = styled.div`
   width: 1075px;
@@ -127,24 +127,24 @@ export const Box = styled.div`
   flex-direction: column;
 `;
 
-export const Input= styled.input`
-    width: 800px;
-    height:20px;
-    border: none;
-    padding: 0 10;
-    border-bottom: solid 1px #023B8d;
-    font-weight: 500;
-    color: #5F7DAF;
-    ::placeholder{
-        font-family: ${Font};
-        color: #5F7DAF;
-    }
-    font-weight: 700;
-    outline : none;
-    margin-left: 10px;
-    
+export const Input = styled.input`
+  width: 700px;
+  height: 20px;
+  border: none;
+  padding: 0 10;
+  border-bottom: solid 1px #023b8d;
+  font-weight: 500;
+  color: #5f7daf;
+  ::placeholder {
+    font-family: ${Font};
+    color: #5f7daf;
+  }
+  font-weight: 700;
+  outline: none;
+  margin-left: 10px;
 `;
 
-export const PlusButton= styled.img`
-width:25px
+export const PlusButton = styled.img`
+  width: 25px;
+  margin-left: 13px;
 `;
