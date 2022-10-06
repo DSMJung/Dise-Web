@@ -1,13 +1,20 @@
 import styled from "styled-components";
 const Font = "font-family: 'Noto Sans KR', sans-serif";
 
+export const div = styled.div`
+  display: flex;
+  align-items: center;
+  padding-top: 30px;
+  flex-direction: column;
+`;
+
 export const Container = styled.div`
-  width: 650px;
-  height: 450px;
-  top: 50%;
+  width: 860px;
+  height: 500px;
+  /* top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  position: absolute;
+  position: absolute; */
   box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.25);
   padding: 20px 30px;
   display: flex;
@@ -33,7 +40,7 @@ export const Title = styled.div`
   margin-bottom: 10px;
 `;
 
-export const Username = styled.div`
+export const UsernameT= styled.div`
   color: #5f7daf;
   font-style: normal;
   font-weight: 700;
@@ -56,7 +63,7 @@ export const Maintext = styled.span`
   color: #024b8d;
   font-style: normal;
   font-weight: bolder;
-  font-size: 10px;
+  font-size: 13px;
   padding-right: 30px;
   line-height: 25px;
   border-bottom: 2px solid #024b8d;
@@ -78,6 +85,8 @@ export const Commenttext = styled.div`
   font-weight: 700;
   font-size: 15px;
   line-height: 23px;
+  margin-left: 10px;
+  
 `;
 
 export const Profileicorn = styled.img`
@@ -86,26 +95,56 @@ export const Profileicorn = styled.img`
 `;
 
 export const Profile = styled.div`
-  display: flex;
-`;
-export const Username1 = styled.div`
+display:flex`;
+
+export const Username = styled.div`
   font-size: 2px;
   color: #5f7daf;
   font-style: normal;
   font-weight: 400;
   margin-left: 10px;
   height: 10px;
+  line-height: 10px;
 `;
 
-export const Comment = styled.div`
+export const Content  = styled.div`
   color: #024b8d;
   font-style: normal;
   font-weight: 700;
-  font-size: 1px;
+  font-size: 2px;
   margin-left: 9px;
   display: flex;
   height: 14px;
+  line-height:19px;
 `;
 export const Text = styled.div`
   flex-direction: column;
+  
+`;
+export const Box = styled.div`
+  width: 1075px;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Input= styled.input`
+    width: 800px;
+    height:20px;
+    border: none;
+    padding: 0 10;
+    border-bottom: solid 1px #023B8d;
+    font-weight: 500;
+    color: #5F7DAF;
+    ::placeholder{
+        font-family: ${Font};
+        color: #5F7DAF;
+    }
+    font-weight: 700;
+    outline : none;
+    margin-left: 10px;
+    
+`;
+
+export const PlusButton= styled.img`
+width:25px
 `;
