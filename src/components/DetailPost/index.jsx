@@ -1,7 +1,7 @@
 import * as S from "./styles";
 import Header from "../Main/Header";
 import { MessageIcorn, ProfileIcorn, PlusIcorn } from "../../assets";
-import Nav from "../Main/Nav";
+import Nav from "../Nav";
 
 function DetailPost() {
   return (
