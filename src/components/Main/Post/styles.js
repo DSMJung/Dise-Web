@@ -25,7 +25,7 @@ export const Detail = styled.span`
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: end;
   box-sizing: border-box;
   padding: 5px;
   align-items: end;
@@ -51,13 +51,8 @@ export const Text = styled.span`
   display: flex;
   justify-content: space-between;
   text-align: start;
-<<<<<<< Updated upstream
   font-family: ${Font};
   @media screen and (max-height: 370px) {
     display: none;
-  } 
-=======
-  ${Font};
-  overflow-y: hidden;
->>>>>>> Stashed changes
+  }
 `;
