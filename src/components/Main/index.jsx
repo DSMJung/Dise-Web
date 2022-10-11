@@ -24,7 +24,7 @@ function Main() {
               </S.WritingBtn>
             </S.MainHeader>
             <S.PostList>
-              <Post></Post>
+              <Post color="Blue"></Post>
             </S.PostList>
           </S.Main>
         </S.Body>

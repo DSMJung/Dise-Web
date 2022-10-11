@@ -7,8 +7,6 @@ import WritePostPage from "./pages/WritePostPage";
 import MyPage from "./pages/MyPage";
 import DetailPost from "./components/DetailPost";
 
-
-
 function App() {
   return (
     <BrowserRouter>
@@ -18,8 +16,8 @@ function App() {
         <Route path="/main" element={<MainPage />}></Route>
         <Route path="/writepost" element={<WritePostPage />}></Route>
         <Route path="/mypage" element={<MyPage />}></Route>
-      <Route path='/*' element={<DetailPost/>}></Route>
-    </Routes>
+        <Route path="/*" element={<DetailPost />}></Route>
+      </Routes>
     </BrowserRouter>
   );
 }

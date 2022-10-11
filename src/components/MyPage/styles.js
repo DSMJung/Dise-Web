@@ -31,6 +31,7 @@ export const Container = styled.div`
   border: 0;
   border-radius: 10px;
   padding: 30px 50px;
+  margin-bottom: 30px;
 `;
 
 export const Profile = styled.div`
@@ -60,6 +61,30 @@ export const MainFont = styled.div`
   font-size: 24px;
 `;
 
+export const ChangeName = styled.input`
+  outline: none;
+  width: 200px;
+  height: 2vh;
+  border: 1px solid #fff;
+  border-radius: 0.5vh;
+  background-color: #5f7daf;
+  color: #cdcdcd;
+  padding: 0.6vh 0.8vw;
+  margin-bottom: 1vh;
+`;
+
+export const ChangePassword = styled.input`
+  outline: none;
+  width: 200px;
+  height: 2vh;
+  border: 1px solid #fff;
+  border-radius: 0.5vh;
+  background-color: #5f7daf;
+  color: #cdcdcd;
+  padding: 0.6vh 0.8vw;
+  margin-top: 1vh;
+`;
+
 export const SecondFont = styled.div`
   color: #cdcdcd;
   > img {
@@ -68,14 +93,62 @@ export const SecondFont = styled.div`
   ]
 `;
 
-export const Remove = styled.div`
-  height: 100px;
+export const Remove = styled.button`
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  border: 0;
+  margin-top: 12%;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const RemoveChange = styled.button`
+  height: 10vh;
+  background-color: transparent;
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+`;
+
+export const ChangeBtn = styled.button`
+  width: 8vw;
+  height: 3vh;
+  border: 0;
+  border-radius: 0.5vh;
+  margin-top: 0.8vh;
+  color: #024bbd;
+  font-weight: 800;
 `;
 
 export const Password = styled.div`
   margin: 30px 0;
+`;
+export const NewPassword = styled.div`
+  margin: 30px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  > div {
+    width: 30vw;
+    display: flex;
+    justify-content: space-between;
+    > .box {
+      height: 16vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+`;
+
+export const PWInputBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  color: #cdcdcd;
 `;
 
 export const PSBtn = styled.button`
