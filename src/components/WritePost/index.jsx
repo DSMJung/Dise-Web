@@ -7,28 +7,30 @@ import Header from "../Main/Header"
 const SelectBox = () => {
   const [major, setMajor] = useState("전체")
   const [active, setActive] = useState(false)
+  const Majors = [
+    { value: "전체" },
+    { value: "Frontend" },
+    { value: "Backend" },
+    { value: "App" },
+    { value: "기타" },
+    { value: "1학년" },
+    { value: "2학년" },
+    { value: "3학년" }
+  ]
   return (
     <S.Head>
       <S.Title>{major}</S.Title>
       <S.Select>
-        <button
-          onClick={() => setActive(!active)}
-        >
+        <button onClick={() => setActive(!active)}>
           {major}
           <img src={Down2} />
         </button>
         {active &&
           <S.OptionList>
-            <S.OptionItem onClick={() => setMajor("전체")} >전체</S.OptionItem>
-            <S.OptionItem onClick={() => setMajor("Frontend")}>Frontend</S.OptionItem>
-            <S.OptionItem onClick={() => setMajor("Backend")}>Backend</S.OptionItem>
-            <S.OptionItem onClick={() => setMajor("App")}> App</S.OptionItem>
-            <S.OptionItem onClick={() => setMajor("기타")}>기타</S.OptionItem>
-            <S.OptionItem onClick={() => setMajor("1학년")}>1학년</S.OptionItem>
-            <S.OptionItem onClick={() => setMajor("2학년")}>2학년</S.OptionItem>
-            <S.OptionItem onClick={() => setMajor("3학년")}>3학년</S.OptionItem>
-          </S.OptionList>
-        }
+            {Majors.map((list) => (
+              <S.OptionItem onClick={() => setMajor(list.value)} >{list.value}</S.OptionItem>
+            ))}
+          </S.OptionList>}
       </S.Select>
     </S.Head>
   )
