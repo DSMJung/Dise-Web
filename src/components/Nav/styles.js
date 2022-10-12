@@ -2,10 +2,10 @@ import styled from "styled-components";
 const Font = "'Noto Sans KR', sans-serif";
 
 export const Container = styled.div`
-  width: 220px;
-  height: 852.5px;
+  width: 150px;
+  min-height: calc(100vh - 50px);
   background:#024B8D;
-  padding: 42px 30px;
+  padding: 25px 30px;
   overflow: none;
   @media screen and (max-width: 1000px) {
    display: none;
@@ -20,7 +20,7 @@ export const AccountBtns = styled.div`
   border-bottom: 2px solid white;
 `
 export const MyProfileBox = styled.div`
-  height: 200px;
+  height: 170px;
   border-bottom: 2px solid white;
   display: flex;
   flex-direction: column;
@@ -28,7 +28,6 @@ export const MyProfileBox = styled.div`
   font-size: 25px;
   color: white;
   font-weight: 600;
-  gap: 10px;
   >img{
     width: 100px;
   }
@@ -38,7 +37,7 @@ export const MyProfileBox = styled.div`
   }
 `
 export const AccountBtn = styled.button`
-  width: 215px;
+  width: inherit;
   height: 37px;
   border: 2px solid white;
   border-radius: 5px;
@@ -49,29 +48,56 @@ export const AccountBtn = styled.button`
   font-weight: 500;
 `
 export const TopicBtns = styled.div`
+  width: inherit;
   margin-top: 38px;
-  height: 507px;
-  border-bottom: 2px solid white;
   display: flex;
   flex-direction: column;
   gap: 30px;
 `
-export const TopicBtn =styled.div`
+export const TopicBtn = styled.button`
+  width: inherit;
   color: white;
   display: flex;
   align-items: center;
   gap: 20px;
-  >span{
-    margin-right: 100px;
+  justify-content: space-between;
+  background: none;
+  border: none;
+  font-size: 15px;
+  >div{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  >div >img{
+    width: 20px;
   }
 `
-export const SettingBtns = styled.div`
-  >img{
-    width: 24px;
-  }
+export const MajorBtns = styled.div`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  gap: 15px;
+  margin-left: 10px;
+`
+export const MajorBtn = styled.button`
+  background: none;
+  border: none;
+  display: flex;
+  justify-content: flex-start;
+  color: white;
+  gap: 20px;
+  font-size: 13px;
+  >img{
+    width: 15px;
+  }
   align-items: center;
-  height: 100px;
-  gap: 30px;
+`
+export const List = styled.div`
+  display: flex;
+  flex-direction: column;
+  color: white;
+  gap: 7px;
+  margin-left: 20px;
+  font-weight: 300;
+  font-size: 13px;
 `

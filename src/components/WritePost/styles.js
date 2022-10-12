@@ -64,7 +64,7 @@ export const OptionItem = styled.li`
 `
 export const TitleInput = styled.input`
   width: calc(75vw - 30px);
-  height: 45px;
+  height: 40px;
   padding:  0 12px;
   font-family: ${Font};
   font-size: 20px;
@@ -75,17 +75,20 @@ export const TitleInput = styled.input`
 `
 export const TextInput = styled.textarea`
   width: calc(75vw - 30px);
-  height: 450px;
+  height: 300px;
   padding:  12px 12px;
   font-family: ${Font};
   font-size: 20px;
   border: 1px solid #024B8D;
   background: white;
   outline: none;
+  ::placeholder{
+  font-family: ${Font};
+  }
 `
 export const PostBtn = styled.button`
-  width: 150px;
-  height: 50px;
+  width: 130px;
+  height: 40px;
   font-family: ${Font};
   font-size: 16px;
   color: #024B8D;
