@@ -16,10 +16,11 @@ export const AccountBtns = styled.div`
   flex-direction: column;
   margin-top: 42px;
   gap:30px;
-  height: 200px;
+  height: 170px;
   border-bottom: 2px solid white;
 `
 export const MyProfileBox = styled.div`
+  margin-top: 20px;
   height: 170px;
   border-bottom: 2px solid white;
   display: flex;
@@ -37,7 +38,7 @@ export const MyProfileBox = styled.div`
   }
 `
 export const AccountBtn = styled.button`
-  width: inherit;
+  width: 150px;
   height: 37px;
   border: 2px solid white;
   border-radius: 5px;

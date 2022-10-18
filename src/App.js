@@ -11,12 +11,12 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<LoginPage />}></Route>
-        <Route path="/signup" element={<SignupPage />}></Route>
-        <Route path="/main" element={<MainPage />}></Route>
-        <Route path="/writepost" element={<WritePostPage />}></Route>
-        <Route path="/mypage" element={<MyPage />}></Route>
-        <Route path="/*" element={<DetailPost />}></Route>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/main" element={<MainPage />} />
+        <Route path="/writepost" element={<WritePostPage />} />
+        <Route path="/mypage" element={<MyPage />} />
+        <Route path="/*" element={<MainPage />} />
       </Routes>
     </BrowserRouter>
   );

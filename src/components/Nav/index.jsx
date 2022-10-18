@@ -1,7 +1,12 @@
 import * as S from "./styles"
 import { Cube, Pen, Down, Up, DefaultProfile, FrontendIcon, BackendIcon, AppIcon, EtcIcon, FirstGradeIcon, SecondGradeIcon, ThirdGradeIcon } from "../../assets";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState } from "react";
+import { getAccessToken } from "../../utils/token";
+import axios from "axios";
+import { useEffect } from "react";
+
+let BASE_URL = process.env.REACT_APP_BASE_URL
 
 const Major = () => {
   return (
@@ -53,46 +58,83 @@ const SchoolTest = () => {
         <span>3학년</span>
       </S.MajorBtn>
     </S.MajorBtns>
-  )
-}
+  );
+};
 
-function Nav() {
-  const navigate = useNavigate();
+const Btns = () => {
   const [major, setMajor] = useState(false);
   const [test, setTest] = useState(false);
 
   return (
-    <S.Container>
-      {localStorage.getItem('access_token') ? (
+    <S.TopicBtns>
+      <S.TopicBtn onClick={() => setMajor(!major)}>
+        <div>
+          <img src={Cube} />
+          <span>전공</span>
+        </div>
+        <img src={major ? Up : Down} />
+      </S.TopicBtn>
+      {major && <Major />}
+      <S.TopicBtn onClick={() => setTest(!test)}>
+        <div>
+          <img src={Pen} />
+          <span>시험</span>
+        </div>
+        <img src={test ? Up : Down} />
+      </S.TopicBtn>
+      {test && <SchoolTest />}
+    </S.TopicBtns>
+  );
+};
+
+const Head = () => {
+  const accessToken = getAccessToken();
+  const [userId, setUserId] = useState("");
+  const [userName, setUserName] = useState("");
+  
+  const getUserInfo = async () => {
+    await axios.get(`${BASE_URL}/user`,
+      {
+        headers: { Authorization: `Bearer ${accessToken}` }
+      }
+    ).then((Response) => {
+      console.log(Response.data);
+      setUserId(Response.data.account_id);
+      setUserName(Response.data.name);
+    });
+  };
+
+  useEffect(() => {
+    getUserInfo();
+  }, []);
+
+  return (
+    <>
+      {accessToken ? (
         <S.MyProfileBox>
           <img src={DefaultProfile}></img>
-          <>UserName</>
-          <span>UserID</span>
+          <>{userName}</>
+          <span>{userId}</span>
         </S.MyProfileBox>
       ) : (
         <S.AccountBtns>
-          <S.AccountBtn onClick={() => navigate("/signup")}>회원가입</S.AccountBtn>
-          <S.AccountBtn onClick={() => navigate("/login")}>로그인</S.AccountBtn>
+          <Link to="/signup">
+            <S.AccountBtn>회원가입</S.AccountBtn>
+          </Link>
+          <Link to="/login">
+            <S.AccountBtn>로그인</S.AccountBtn>
+          </Link>
         </S.AccountBtns>
       )}
-      <S.TopicBtns>
-        <S.TopicBtn onClick={() => setMajor(!major)}>
-          <div>
-            <img src={Cube} />
-            <span>전공</span>
-          </div>
-          <img src={major ? Up : Down} />
-        </S.TopicBtn>
-        {major && <Major />}
-        <S.TopicBtn onClick={()=> setTest(!test)}>
-          <div>
-            <img src={Pen} />
-            <span>시험</span>
-          </div>
-          <img src={test ? Up : Down} />
-        </S.TopicBtn>
-        {test && <SchoolTest />}
-      </S.TopicBtns>
+    </>
+  )
+}
+
+function Nav() {
+  return (
+    <S.Container>
+      <Head />
+      <Btns />
     </S.Container>
   )
 }
