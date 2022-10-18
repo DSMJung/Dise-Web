@@ -19,8 +19,8 @@ export const Div = styled.div`
 `;
 
 export const Container = styled.div`
-  width: 45vw;
-  height: 70vh;
+  width: 60vw;
+  height: 73vh;
   box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.25);
   padding: 20px 30px;
   display: flex;
