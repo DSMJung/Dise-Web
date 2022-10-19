@@ -4,15 +4,37 @@ import { Re } from "../../assets";
 import { More } from "../../assets";
 import Post from "../Main/Post";
 import { useState } from "react";
+import { getAccessToken } from "../../utils/token";
+import axios from "axios";
+import { useEffect } from "react";
+const BASE_URL = process.env.REACT_APP_BASE_URL
 
 function MyPageComponents() {
-  const [modalP, setModalP] = useState(true);
+  const accessToken = getAccessToken();
 
+  const [modalP, setModalP] = useState(true);
   const [modalPs, setModalPs] = useState(true);
+  const [userId, setUserId] = useState("");
+  const [userName, setUserName] = useState("");
+
+  const getUserInfo = async () => {
+    await axios.get(`${BASE_URL}/user`,
+      {
+        headers: { Authorization: `Bearer ${accessToken}` }
+      }
+    ).then((Response) => {
+      setUserId(Response.data.account_id);
+      setUserName(Response.data.name);
+    });
+  };
+
+  useEffect(() => {
+    getUserInfo();
+  }, [modalP]);
 
   return (
     <S.MyPage>
-      <Nav />
+      <Nav change={userId} />
       <span>
         <S.Header>
           <span>마이페이지</span>
@@ -46,8 +68,8 @@ function MyPageComponents() {
         <div className="Inpro">
           <S.Img />
           <S.Name>
-            <S.MainFont>UserName</S.MainFont>
-            <S.SecondFont>UserID</S.SecondFont>
+            <S.MainFont>{userName}</S.MainFont>
+            <S.SecondFont>{userId}</S.SecondFont>
           </S.Name>
         </div>
         <S.Remove
@@ -62,16 +84,19 @@ function MyPageComponents() {
   }
 
   function ProfileChange() {
+    const [reviseName, setReviseName] = useState("");
     return (
       <S.Profile>
         <div className="Inpro">
           <S.Img />
           <S.Name>
-            <S.ChangeName />
-            <S.SecondFont>UserID</S.SecondFont>
+            <S.ChangeName onChange={(e) => setReviseName(e.target.value)} />
+            <S.SecondFont>{userId}</S.SecondFont>
           </S.Name>
         </div>
-        <RemoveChange name={"prof"} />
+        <RemoveChange
+          name={"prof"}
+          reviseName={reviseName} />
       </S.Profile>
     );
   }
@@ -97,33 +122,53 @@ function MyPageComponents() {
   }
 
   function PasswordChange() {
+    
     return (
       <S.NewPassword>
-        <div>
-          <div className="box">
-            <S.MainFont>비밀번호</S.MainFont>
-            <PWInput Name={"이전 비밀번호"} />
-          </div>
-          <div className="box">
-            <PWInput Name={"새 비밀번호"} />
-            <PWInput Name={"새 비밀번호 확인"} />
-          </div>
-        </div>
+        <S.PasswordBox>
+          <S.BeforePassword>
+            <span>비밀번호</span>
+            <div>
+              이전 비밀번호
+              <S.PasswordInput />
+            </div>
+          </S.BeforePassword>
+          <S.AfterPassword>
+            <div>
+              새 비밀번호
+              <S.PasswordInput />
+            </div>
+            <div>
+              새 비밀번호 확인
+              <S.PasswordInput />
+            </div>
+          </S.AfterPassword>
+        </S.PasswordBox>
         <RemoveChange name={"pw"} />
       </S.NewPassword>
     );
   }
 
-  function PWInput(props) {
-    return (
-      <S.PWInputBox>
-        {props.Name}
-        <S.ChangePassword />
-      </S.PWInputBox>
-    );
-  }
-
   function RemoveChange(props) {
+    const reviseUserInfo = async () => {
+      try {
+        await axios.put(`${BASE_URL}/user`,
+          {
+            name: props.reviseName
+          },
+          {
+            headers: { Authorization: `Bearer ${accessToken}` }
+          }
+        ).then(() => {
+          setModalP(!modalP);
+        })
+      } catch (error) {
+        if (error.response.status == 400) {
+          alert('이름은 4자 이상이어야 합니다.');
+        };
+      };
+    };
+
     if (props.name === "prof")
       return (
         <S.RemoveChange>
@@ -135,9 +180,7 @@ function MyPageComponents() {
             취소
           </S.ChangeBtn>
           <S.ChangeBtn // 기능구현때 여기 바꿔야함
-            onClick={() => {
-              setModalP(!modalP);
-            }}
+            onClick={reviseUserInfo}
           >
             변경
           </S.ChangeBtn>
