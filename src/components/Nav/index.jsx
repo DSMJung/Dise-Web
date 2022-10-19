@@ -87,18 +87,17 @@ const Btns = () => {
   );
 };
 
-const Head = () => {
+const Head = (change) => {
   const accessToken = getAccessToken();
   const [userId, setUserId] = useState("");
   const [userName, setUserName] = useState("");
-  
+
   const getUserInfo = async () => {
     await axios.get(`${BASE_URL}/user`,
       {
         headers: { Authorization: `Bearer ${accessToken}` }
       }
     ).then((Response) => {
-      console.log(Response.data);
       setUserId(Response.data.account_id);
       setUserName(Response.data.name);
     });
@@ -106,13 +105,15 @@ const Head = () => {
 
   useEffect(() => {
     getUserInfo();
-  }, []);
+  }, [change]);
 
   return (
     <>
       {accessToken ? (
         <S.MyProfileBox>
-          <img src={DefaultProfile}></img>
+          <Link to="/mypage">
+            <img src={DefaultProfile}></img>
+          </Link>
           <>{userName}</>
           <span>{userId}</span>
         </S.MyProfileBox>
@@ -130,10 +131,10 @@ const Head = () => {
   )
 }
 
-function Nav() {
+function Nav(change) {
   return (
     <S.Container>
-      <Head />
+      <Head change={change} />
       <Btns />
     </S.Container>
   )
