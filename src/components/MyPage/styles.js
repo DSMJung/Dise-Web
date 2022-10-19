@@ -68,9 +68,12 @@ export const ChangeName = styled.input`
   border: 1px solid #fff;
   border-radius: 0.5vh;
   background-color: #5f7daf;
-  color: #cdcdcd;
   padding: 0.6vh 0.8vw;
   margin-bottom: 1vh;
+  color: white;
+  ::placeholder{
+    color: #cdcdcd;
+  }
 `;
 
 export const ChangePassword = styled.input`
@@ -90,7 +93,6 @@ export const SecondFont = styled.div`
   > img {
     margin-left: 10px;
   }
-  ]
 `;
 
 export const Remove = styled.button`
@@ -127,23 +129,6 @@ export const ChangeBtn = styled.button`
 export const Password = styled.div`
   margin: 30px 0;
 `;
-export const NewPassword = styled.div`
-  margin: 30px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  > div {
-    width: 30vw;
-    display: flex;
-    justify-content: space-between;
-    > .box {
-      height: 16vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-  }
-`;
 
 export const PWInputBox = styled.div`
   display: flex;
@@ -169,7 +154,6 @@ export const PostTitle = styled.p`
   display: flex;
   justify-content: space-between;
   align-items: end;
-  }
 `;
 
 export const Out = styled.div`
@@ -190,3 +174,39 @@ export const OutBtn = styled.button`
     border: 1px solid red;
   }
 `;
+export const NewPassword = styled.div`
+  display: flex;
+  height: 170px;
+`
+export const PasswordBox = styled.div`
+  display: flex;
+  margin-top: 20px;
+`
+export const AfterPassword = styled.div`
+  display: flex;
+  flex-direction: column;
+  font-weight: 400;
+  font-size: 20px;
+  color: #CDCDCD;
+  gap: 12px;
+`
+export const PasswordInput = styled.input`
+  background: #5F7DAF;
+  border: 1px solid #FFFFFF;
+  border-radius: 5px;
+  width: 340px;
+  height: 30px;
+`
+export const BeforePassword = styled.div`
+  display: flex;
+  flex-direction:column;
+  font-weight: 400;
+  font-size: 20px;
+  color: #CDCDCD;
+  >span{
+    color: white;
+    font-weight: 700;
+    font-size: 25px;
+  }
+  gap: 39px;
+`

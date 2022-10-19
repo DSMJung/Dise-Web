@@ -20,8 +20,8 @@ export const AccountBtns = styled.div`
   border-bottom: 2px solid white;
 `
 export const MyProfileBox = styled.div`
-  margin-top: 20px;
-  height: 170px;
+  margin-top: 15px;
+  height: 200px;
   border-bottom: 2px solid white;
   display: flex;
   flex-direction: column;
