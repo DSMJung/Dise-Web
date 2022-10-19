@@ -3,6 +3,8 @@ import Post from "./Post/index";
 import Header from "./Header/index";
 import { Writing } from "../../assets";
 import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import Nav from "../Nav";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -24,7 +26,7 @@ function Main() {
               </S.WritingBtn>
             </S.MainHeader>
             <S.PostList>
-              <Post color="Blue"></Post>
+              <Post color="Blue" />
             </S.PostList>
           </S.Main>
         </S.Body>

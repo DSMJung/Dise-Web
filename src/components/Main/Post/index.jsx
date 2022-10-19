@@ -1,16 +1,23 @@
 import * as S from "./styles";
 import { PostImage, PostImageW } from "../../../assets";
-import { Front } from "../../../assets";
+import {
+  FrontendIcon,
+  BackendIcon,
+  AppIcon,
+  EtcIcon,
+  FirstGradeIcon,
+  SecondGradeIcon,
+  ThirdGradeIcon,
+} from "../../../assets";
 
-const userName = "UserName";
-const field = Front;
-const title = "대충 제목";
-const previewtext =
-  "내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용대충내용";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 const onClickBtn = () => {
-  window.location(`/post/${userName}`);
+  window.location(`/`);
 };
-const preview = previewtext.substring(0, 50) + "...";
 
 function Post(props) {
   return <>{props.color === "Blue" ? <PostBlue /> : <PostWhite />}</>;
@@ -25,17 +32,15 @@ function PostBlue() {
       >
         <S.Body>
           <S.Title>
-            <h1 style={{ margin: 0 }}>{title}</h1>
+            <h1 style={{ margin: 0 }}>{Object.title}</h1>
           </S.Title>
           <S.Text>
-            <p style={{ margin: 0, fontSize: 20 }}>{preview}</p>
+            <p style={{ margin: 0, fontSize: 20 }}>{Object.content}</p>
           </S.Text>
         </S.Body>
         <S.Detail>
-          <img src={field} alt="전공분야" />
-          <p style={{ margin: 0, fontSize: 20, color: "white" }}>
-            작성자 {userName}
-          </p>
+          <img src={FrontendIcon} alt="전공분야" />
+          <p style={{ margin: 0, fontSize: 20, color: "white" }}>작성자 {}</p>
         </S.Detail>
       </S.PostBtn>
     </>
@@ -51,18 +56,14 @@ function PostWhite() {
       >
         <S.Body>
           <S.Title>
-            <h1 style={{ margin: 0, color: "#024b8d" }}>{title}</h1>
+            <h1 style={{ margin: 0, color: "#024b8d" }}>{}</h1>
           </S.Title>
           <S.Text>
-            <p style={{ margin: 0, fontSize: 20, color: "#5F7DAF" }}>
-              {preview}
-            </p>
+            <p style={{ margin: 0, fontSize: 20, color: "#5F7DAF" }}>{}</p>
           </S.Text>
         </S.Body>
         <S.Detail>
-          <p style={{ margin: 0, fontSize: 20, color: "#024b8d" }}>
-            작성자 {userName}
-          </p>
+          <p style={{ margin: 0, fontSize: 20, color: "#024b8d" }}>작성자 {}</p>
         </S.Detail>
       </S.PostBtn>
     </>

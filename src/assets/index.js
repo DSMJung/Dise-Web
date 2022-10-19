@@ -3,7 +3,6 @@ export { default as OpenEye } from "./imgs/openEye.svg";
 export { default as CloseEye } from "./imgs/closeEye.svg";
 export { default as PostImage } from "./imgs/postImage.png";
 export { default as PostImageW } from "./imgs/postImage.svg";
-export { default as Front } from "./imgs/frontend.svg";
 export { default as Search } from "./imgs/search.svg";
 export { default as Writing } from "./imgs/writing.svg";
 export { default as Cube } from "./imgs/Vector.svg";
