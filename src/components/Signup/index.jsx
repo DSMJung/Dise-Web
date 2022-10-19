@@ -49,7 +49,6 @@ function Signup() {
                 alert(`${id}님 감사합니다.\n회원가입이 되었습니다.`)
                 navigate("/login");
             } catch (error) {
-                console.log(error.response.data);
                 if (error.response.data.password) alert(error.response.data.password)
                 else if (error.response.data.accountId) alert("회원가입 실패 : 아이디는 8자 이상 20자 이하여야 합니다.")
                 else if(error.response.data.status === 409) alert("회원가입 실패 : 이미 존재하는 아이디입니다.")

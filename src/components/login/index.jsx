@@ -4,6 +4,7 @@ import { Logo, CloseEye, OpenEye } from "../../assets";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import { setAccessToken } from "../../utils/token";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL
 
@@ -31,10 +32,9 @@ function Login() {
         await axios.post(`${BASE_URL}/user/login`, {
             account_id: id,
             password: password,
+        }).then((Response) => {
+            setAccessToken(Response.data.access_token);
         })
-            .then((Response) => {
-                localStorage.setItem('access_token', Response.data.access_token)
-            })
     }
     const onLogin = async () => {
         try {
@@ -42,7 +42,6 @@ function Login() {
             alert(`${id}님 감사합니다.\n로그인이 되었습니다.`)
             navigate("/main");
         } catch (error) {
-            console.log(error.response.data);
             if (error.response.status === 404) {
                 alert("로그인 실패 : 가입이 되지 않은 아이디입니다.");
             }
@@ -54,7 +53,7 @@ function Login() {
     return (
         <S.Container>
             <div>
-                <S.LogoImg src={Logo}></S.LogoImg>
+                <S.LogoImg src={Logo} />
                 <S.LoginText>로그인</S.LoginText>
             </div>
             <S.Inputs>
