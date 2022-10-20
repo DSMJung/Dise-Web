@@ -5,6 +5,7 @@ import axios from "axios";
 import * as S from "./styles";
 import Nav from "../Nav";
 import Header from "../Main/Header";
+import { getAccessToken } from "../../utils/token";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -100,6 +101,7 @@ function WritePost() {
   });
 
   const PostData = async () => {
+    const accessToken = getAccessToken();
     if (feedInfo.title === "") alert("제목을 입력해 주세요.");
     else if (feedInfo.content === "") alert("내용을 입력해 주세요.");
     else {
@@ -113,14 +115,14 @@ function WritePost() {
           },
           {
             headers: {
-              Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+              Authorization: `Bearer ${accessToken}`,
             },
           }
         )
         .then((Response) => {
           alert("게시되었습니다");
           console.log(Response);
-          navigate(`${BASE_URL}/main`);
+          navigate(`/main`);
         })
         .catch((error) => {
           if (error.response.status === 400) alert("400 BAD REQUEST");
