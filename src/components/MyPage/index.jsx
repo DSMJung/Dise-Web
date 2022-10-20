@@ -47,6 +47,12 @@ function MyPageComponents() {
     })
   }
 
+  const onLogout = () => {
+    deleteAccessToken()
+    alert("로그아웃 되었습니다.");
+    navigate(`/main`)
+  }
+
   return (
     <S.MyPage>
       <Nav change={userId} />
@@ -70,6 +76,7 @@ function MyPageComponents() {
           </S.MyPost>
           <hr />
           <S.Out>
+            <S.OutBtn onClick={onLogout}>로그아웃</S.OutBtn>
             <S.OutBtn onClick={onDeleteAccount}>회원탈퇴</S.OutBtn>
           </S.Out>
         </S.Container>

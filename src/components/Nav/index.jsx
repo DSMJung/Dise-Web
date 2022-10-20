@@ -104,7 +104,7 @@ const Head = (change) => {
   };
 
   useEffect(() => {
-    getUserInfo();
+    accessToken && getUserInfo();
   }, [change]);
 
   return (
