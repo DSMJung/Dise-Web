@@ -7,6 +7,11 @@ import axios from "axios";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
+import { useState } from "react";
+import axios from "axios";
+
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 function DetailPost() {
   const [comment, setComment] = useState(""); //onchange 이용하여 commnet 값 담기
   const [feedComments, setFeedComments] = useState([]); //댓글  리스트
@@ -32,6 +37,7 @@ function DetailPost() {
     setComment(""); //입력하는 댓글창 빈 문자열로 초기화
     console.log(comment);
   };
+  
   return (
     <>
       <div style={{ display: "flex" }}>

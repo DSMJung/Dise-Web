@@ -160,6 +160,7 @@ export const Out = styled.div`
   margin: 30px 0;
   display: flex;
   justify-content: flex-end;
+  gap: 20px;
 `;
 
 export const OutBtn = styled.button`

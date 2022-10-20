@@ -16,6 +16,7 @@ function App() {
         <Route path="/main" element={<MainPage />} />
         <Route path="/writepost" element={<WritePostPage />} />
         <Route path="/mypage" element={<MyPage />} />
+        <Route path="/detailpost/:id" element={<DetailPost />} />
         <Route path="/*" element={<MainPage />} />
       </Routes>
     </BrowserRouter>
