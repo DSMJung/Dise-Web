@@ -4,9 +4,10 @@ import { Re } from "../../assets";
 import { More } from "../../assets";
 import Post from "../Main/Post";
 import { useState } from "react";
-import { getAccessToken } from "../../utils/token";
+import { getAccessToken, deleteAccessToken } from "../../utils/token";
 import axios from "axios";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 const BASE_URL = process.env.REACT_APP_BASE_URL
 
 function MyPageComponents() {
@@ -16,6 +17,8 @@ function MyPageComponents() {
   const [modalPs, setModalPs] = useState(true);
   const [userId, setUserId] = useState("");
   const [userName, setUserName] = useState("");
+
+  const navigate = useNavigate();
 
   const getUserInfo = async () => {
     await axios.get(`${BASE_URL}/user`,
@@ -31,6 +34,18 @@ function MyPageComponents() {
   useEffect(() => {
     getUserInfo();
   }, [modalP]);
+
+  const onDeleteAccount = async () => {
+    await axios.delete(`${BASE_URL}/user`,
+      {
+        headers: { Authorization: `Bearer ${accessToken}` }
+      }
+    ).then(() => {
+      alert("회원님의 계정이 성공적으로 탈퇴되었습니다.");
+      deleteAccessToken();
+      navigate('/login');
+    })
+  }
 
   return (
     <S.MyPage>
@@ -55,7 +70,7 @@ function MyPageComponents() {
           </S.MyPost>
           <hr />
           <S.Out>
-            <S.OutBtn>회원탈퇴</S.OutBtn>
+            <S.OutBtn onClick={onDeleteAccount}>회원탈퇴</S.OutBtn>
           </S.Out>
         </S.Container>
       </span>
@@ -122,7 +137,7 @@ function MyPageComponents() {
   }
 
   function PasswordChange() {
-    
+
     return (
       <S.NewPassword>
         <S.PasswordBox>
