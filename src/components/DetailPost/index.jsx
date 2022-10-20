@@ -3,13 +3,23 @@ import Header from "../Main/Header";
 import { MessageIcon, ProfileIcon, PlusIcon } from "../../assets";
 import Nav from "../Nav";
 
+import { useState } from "react";
+import axios from "axios";
+
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 function DetailPost() {
+  const feedId = "";
+  
+  const DetailedInquiry = async () => {
+    await axios.get(`${BASE_URL}/feed/${feedId}`);
+  };
+
   return (
     <>
       <div style={{ display: "flex" }}>
         <Nav />
         <S.Box>
-          
           <div className="H">
             <Header />
           </div>
@@ -39,7 +49,6 @@ function DetailPost() {
               </S.Text>
             </S.Profile>
           </S.Container>
-         
         </S.Box>
       </div>
     </>
