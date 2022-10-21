@@ -30,6 +30,7 @@ export const Container = styled.div`
   border: 1px solid #a6a6a6;
   border-radius: 5px;
   margin-left: 61px;
+  overflow-y: scroll;
 `;
 
 export const Title = styled.div`
@@ -109,7 +110,7 @@ export const Username = styled.div`
   line-height: 8px;
 `;
 
-export const Content = styled.div`
+export const Comment = styled.div`
   color: #024b8d;
   font-style: normal;
   font-weight: 700;
