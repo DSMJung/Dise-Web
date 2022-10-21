@@ -71,7 +71,7 @@ export const ChangeName = styled.input`
   padding: 0.6vh 0.8vw;
   margin-bottom: 1vh;
   color: white;
-  ::placeholder{
+  ::placeholder {
     color: #cdcdcd;
   }
 `;
@@ -92,6 +92,15 @@ export const SecondFont = styled.div`
   color: #cdcdcd;
   > img {
     margin-left: 10px;
+  }
+`;
+
+export const MoreViewBtn = styled.button`
+  background-color: transparent;
+  border: 0;
+  color: #cdcdcd;
+  > img {
+    margin: 0px 10px;
   }
 `;
 
@@ -147,10 +156,14 @@ export const PSBtn = styled.button`
 `;
 
 export const MyPost = styled.div`
+  height: 300px;
   margin: 30px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
-export const PostTitle = styled.p`
+export const PostTitle = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: end;
@@ -178,36 +191,40 @@ export const OutBtn = styled.button`
 export const NewPassword = styled.div`
   display: flex;
   height: 170px;
-`
+`;
 export const PasswordBox = styled.div`
   display: flex;
   margin-top: 20px;
-`
+`;
 export const AfterPassword = styled.div`
   display: flex;
   flex-direction: column;
   font-weight: 400;
   font-size: 20px;
-  color: #CDCDCD;
+  color: #cdcdcd;
   gap: 12px;
-`
+`;
 export const PasswordInput = styled.input`
-  background: #5F7DAF;
-  border: 1px solid #FFFFFF;
+  background: #5f7daf;
+  border: 1px solid #ffffff;
   border-radius: 5px;
   width: 340px;
   height: 30px;
-`
+`;
 export const BeforePassword = styled.div`
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   font-weight: 400;
   font-size: 20px;
-  color: #CDCDCD;
-  >span{
+  color: #cdcdcd;
+  > span {
     color: white;
     font-weight: 700;
     font-size: 25px;
   }
   gap: 39px;
-`
+`;
+
+export const Main = styled.div`
+  margin-top: 30px;
+`;
