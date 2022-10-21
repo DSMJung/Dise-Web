@@ -11,7 +11,6 @@ const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 function DetailPost() {
   const list = postList;
-  console.log(list);
   return (
     <>
       <div style={{ display: "flex" }}>
