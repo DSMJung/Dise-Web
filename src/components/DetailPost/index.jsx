@@ -1,19 +1,17 @@
 import * as S from "./styles";
 import Header from "../Main/Header";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { MessageIcon, ProfileIcon, PlusIcon } from "../../assets";
 import Nav from "../Nav";
 import axios from "axios";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
-import { useState } from "react";
-import axios from "axios";
-import { postList } from "../Main/Post";
-
-const BASE_URL = process.env.REACT_APP_BASE_URL;
-
 function DetailPost() {
+  const { id } = useParams();
+  const [list, setList] = useState([{}]);
+  
   const [comment, setComment] = useState(""); //onchange 이용하여 commnet 값 담기
   const [feedComments, setFeedComments] = useState([]); //댓글  리스트
   const [userName, setUserName] = useState("");
@@ -22,7 +20,8 @@ function DetailPost() {
     let commentId = localStorage.getItem("comment_id");
     console.log(comment);
     await axios
-      .post(`${BASE_URL}/comment/${commentId}`, {
+    .post(`${BASE_URL}/comment/${commentId}`, {
+
         headers: {
           Authorization: `Bearer ${localStorage.getItem("access_token")}`,
         },
@@ -39,6 +38,18 @@ function DetailPost() {
     console.log(comment);
   };
   
+  const Get = async () => {
+    await axios.get(`${BASE_URL}/feed/${id}`).then((Response) => {
+      setList(Response.data);
+    });
+  };
+
+  console.log(list);
+
+  useEffect(() => {
+    Get();
+  }, []);
+  
   return (
     <>
       <div style={{ display: "flex" }}>
@@ -50,10 +61,8 @@ function DetailPost() {
           <S.Container>
             <div>
               <S.Title>{list.title}</S.Title>
-              <S.UsernameT>{list.name}</S.UsernameT>
-              <S.Datetext>
-                {list.created_at.match(/\d{4}-\d{2}-\d{2}/)}
-              </S.Datetext>
+              <S.UsernameT>{list.user_name}</S.UsernameT>
+              <S.Datetext>{list.created_at}</S.Datetext>
             </div>
             <S.Maintext>{list.content}</S.Maintext>
             <S.Commentbox>
@@ -73,14 +82,15 @@ function DetailPost() {
               <S.PlusButton
                 src={PlusIcon}
                 onClick={feedId} //클릭하면 post, feedId 함수 실행하기
-              />
+                />
+
             </div>
             {feedComments.map((_, i, commentArr) => (
               <S.Profile>
                 <S.Profileicon src={ProfileIcon} />
                 <S.Text>
-                  <S.Username>{userName}</S.Username>
-                  <S.Comment>{commentArr[i]}</S.Comment>
+                <S.Username>{userName}</S.Username>
+                  {/* <S.Comment>{commentArr[i]}</S.Comment> */}
                 </S.Text>
               </S.Profile>
             ))}
