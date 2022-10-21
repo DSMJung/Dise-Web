@@ -9,6 +9,7 @@ const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 import { useState } from "react";
 import axios from "axios";
+import { postList } from "../Main/Post";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -48,13 +49,13 @@ function DetailPost() {
           </div>
           <S.Container>
             <div>
-              <S.Title>Html 태그 총정리</S.Title>
-              <S.UsernameT>UserName</S.UsernameT>
-              <S.Datetext>2022.07.28</S.Datetext>
+              <S.Title>{list.title}</S.Title>
+              <S.UsernameT>{list.name}</S.UsernameT>
+              <S.Datetext>
+                {list.created_at.match(/\d{4}-\d{2}-\d{2}/)}
+              </S.Datetext>
             </div>
-            <S.Maintext>
-              충본문내용대충본문내용대충본문내용대충본문내용대충본문내용대충본문내용대충본문내용대충본문내용대충본문내용대충본문내용대충본문내용대충본문내용대충본문내용대충본문내용대충본문내용대충본문내용대충본문내용대충본문내용대충본문내용대충본문내용대충본문내용대충본문대충본문내용대충본문내용대충본문내용대충본문대충본문내용대충본문내용대충본문내용대충본문대충본문내용대충본문내용대충본문내용대충본문대충본문내용대충본문내용대충본문내용대충본문
-            </S.Maintext>
+            <S.Maintext>{list.content}</S.Maintext>
             <S.Commentbox>
               <S.Messageicon src={MessageIcon} />
               <S.Commenttext>댓글</S.Commenttext>

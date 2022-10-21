@@ -2,13 +2,14 @@ import * as S from "./styles";
 import Nav from "../Nav";
 import { Re } from "../../assets";
 import { More } from "../../assets";
+import { Left } from "../../assets";
 import Post from "../Main/Post";
 import { useState } from "react";
 import { getAccessToken, deleteAccessToken } from "../../utils/token";
 import axios from "axios";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-const BASE_URL = process.env.REACT_APP_BASE_URL
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 function MyPageComponents() {
   const accessToken = getAccessToken();
@@ -21,14 +22,14 @@ function MyPageComponents() {
   const navigate = useNavigate();
 
   const getUserInfo = async () => {
-    await axios.get(`${BASE_URL}/user`,
-      {
-        headers: { Authorization: `Bearer ${accessToken}` }
-      }
-    ).then((Response) => {
-      setUserId(Response.data.account_id);
-      setUserName(Response.data.name);
-    });
+    await axios
+      .get(`${BASE_URL}/user`, {
+        headers: { Authorization: `Bearer ${accessToken}` },
+      })
+      .then((Response) => {
+        setUserId(Response.data.account_id);
+        setUserName(Response.data.name);
+      });
   };
 
   useEffect(() => {
@@ -36,22 +37,24 @@ function MyPageComponents() {
   }, [modalP]);
 
   const onDeleteAccount = async () => {
-    await axios.delete(`${BASE_URL}/user`,
-      {
-        headers: { Authorization: `Bearer ${accessToken}` }
-      }
-    ).then(() => {
-      alert("회원님의 계정이 성공적으로 탈퇴되었습니다.");
-      deleteAccessToken();
-      navigate('/login');
-    })
-  }
+    await axios
+      .delete(`${BASE_URL}/user`, {
+        headers: { Authorization: `Bearer ${accessToken}` },
+      })
+      .then(() => {
+        alert("회원님의 계정이 성공적으로 탈퇴되었습니다.");
+        deleteAccessToken();
+        navigate("/login");
+      });
+  };
 
   const onLogout = () => {
-    deleteAccessToken()
+    deleteAccessToken();
     alert("로그아웃 되었습니다.");
-    navigate(`/main`)
-  }
+    navigate(`/main`);
+  };
+
+  const [more, setMore] = useState(true);
 
   return (
     <S.MyPage>
@@ -60,26 +63,52 @@ function MyPageComponents() {
         <S.Header>
           <span>마이페이지</span>
         </S.Header>
-        <S.Container>
-          {modalP === true ? <ProfileDefault /> : <ProfileChange />}
-          <hr />
-          {modalPs === true ? <PasswordDefault /> : <PasswordChange />}
-          <hr />
-          <S.MyPost>
-            <S.PostTitle>
-              <S.MainFont>내 게시물</S.MainFont>
-              <S.SecondFont className="text">
-                더보기<img src={More}></img>
-              </S.SecondFont>
-            </S.PostTitle>
-            <Post color="White" />
-          </S.MyPost>
-          <hr />
-          <S.Out>
-            <S.OutBtn onClick={onLogout}>로그아웃</S.OutBtn>
-            <S.OutBtn onClick={onDeleteAccount}>회원탈퇴</S.OutBtn>
-          </S.Out>
-        </S.Container>
+        {more === true ? (
+          <S.Container>
+            {modalP === true ? <ProfileDefault /> : <ProfileChange />}
+            <hr />
+            {modalPs === true ? <PasswordDefault /> : <PasswordChange />}
+            <hr />
+            <S.MyPost>
+              <S.PostTitle>
+                <S.MainFont>내 게시물</S.MainFont>
+                <S.MoreViewBtn
+                  onClick={() => {
+                    setMore(!more);
+                  }}
+                  className="text"
+                >
+                  더보기<img src={More}></img>
+                </S.MoreViewBtn>
+              </S.PostTitle>
+              <Post color="White" />
+            </S.MyPost>
+            <hr />
+            <S.Out>
+              <S.OutBtn onClick={onLogout}>로그아웃</S.OutBtn>
+              <S.OutBtn onClick={onDeleteAccount}>회원탈퇴</S.OutBtn>
+            </S.Out>
+          </S.Container>
+        ) : (
+          <S.Container>
+            <header>
+              <S.MoreViewBtn
+                onClick={() => {
+                  setMore(!more);
+                }}
+              >
+                <img src={Left} />
+                돌아가기
+              </S.MoreViewBtn>
+            </header>
+            <S.Main>
+              <Post />
+              <Post />
+              <Post />
+              <Post />
+            </S.Main>
+          </S.Container>
+        )}
       </span>
     </S.MyPage>
   );
@@ -116,9 +145,7 @@ function MyPageComponents() {
             <S.SecondFont>{userId}</S.SecondFont>
           </S.Name>
         </div>
-        <RemoveChange
-          name={"prof"}
-          reviseName={reviseName} />
+        <RemoveChange name={"prof"} reviseName={reviseName} />
       </S.Profile>
     );
   }
@@ -144,7 +171,6 @@ function MyPageComponents() {
   }
 
   function PasswordChange() {
-
     return (
       <S.NewPassword>
         <S.PasswordBox>
@@ -174,21 +200,24 @@ function MyPageComponents() {
   function RemoveChange(props) {
     const reviseUserInfo = async () => {
       try {
-        await axios.put(`${BASE_URL}/user`,
-          {
-            name: props.reviseName
-          },
-          {
-            headers: { Authorization: `Bearer ${accessToken}` }
-          }
-        ).then(() => {
-          setModalP(!modalP);
-        })
+        await axios
+          .put(
+            `${BASE_URL}/user`,
+            {
+              name: props.reviseName,
+            },
+            {
+              headers: { Authorization: `Bearer ${accessToken}` },
+            }
+          )
+          .then(() => {
+            setModalP(!modalP);
+          });
       } catch (error) {
         if (error.response.status == 400) {
-          alert('이름은 4자 이상이어야 합니다.');
-        };
-      };
+          alert("이름은 4자 이상이어야 합니다.");
+        }
+      }
     };
 
     if (props.name === "prof")

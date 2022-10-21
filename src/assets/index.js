@@ -26,3 +26,4 @@ export { default as FirstGradeIcon } from "./imgs/firstgrade.svg";
 export { default as SecondGradeIcon } from "./imgs/secondgrade.svg";
 export { default as ThirdGradeIcon } from "./imgs/thirdgrade.svg";
 export { default as Up } from "./imgs/up.svg";
+export {default as Left} from "./imgs/left.svg";
