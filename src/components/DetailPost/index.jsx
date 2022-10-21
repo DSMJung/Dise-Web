@@ -15,12 +15,13 @@ function DetailPost() {
   const [comment, setComment] = useState(""); //onchange 이용하여 commnet 값 담기
   const [feedComments, setFeedComments] = useState([]); //댓글  리스트
   const [userName, setUserName] = useState("");
-  
+
   const feedId = async (e) => {
     let commentId = localStorage.getItem("comment_id");
     console.log(comment);
     await axios
     .post(`${BASE_URL}/comment/${commentId}`, {
+
         headers: {
           Authorization: `Bearer ${localStorage.getItem("access_token")}`,
         },
@@ -36,7 +37,6 @@ function DetailPost() {
     setComment(""); //입력하는 댓글창 빈 문자열로 초기화
     console.log(comment);
   };
-
   
   const Get = async () => {
     await axios.get(`${BASE_URL}/feed/${id}`).then((Response) => {
@@ -49,6 +49,7 @@ function DetailPost() {
   useEffect(() => {
     Get();
   }, []);
+  
   return (
     <>
       <div style={{ display: "flex" }}>
@@ -82,6 +83,7 @@ function DetailPost() {
                 src={PlusIcon}
                 onClick={feedId} //클릭하면 post, feedId 함수 실행하기
                 />
+
             </div>
             {feedComments.map((_, i, commentArr) => (
               <S.Profile>
