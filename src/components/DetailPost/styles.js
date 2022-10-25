@@ -20,7 +20,7 @@ export const Div = styled.div`
 
 export const Container = styled.div`
   width: 60vw;
-  height: 73vh;
+  min-height: 73vh;
   box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.25);
   padding: 20px 30px;
   display: flex;
@@ -31,6 +31,19 @@ export const Container = styled.div`
   border-radius: 5px;
   margin-left: 61px;
   overflow-y: scroll;
+  
+  /* .Container::-webkit-scrollbar {
+    width: 10px;
+  }
+  .container::-webkit-scrollbar-thumb {
+    background-color: #2f3542;
+    border-radius: 10px;
+  }
+  .container::-webkit-scrollbar-track {
+    background-color: grey;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+  } */
 `;
 
 export const Title = styled.div`
@@ -60,7 +73,7 @@ export const Datetext = styled.div`
 `;
 
 export const Maintext = styled.span`
-  height: 130px;
+  min-height: 130px;
   display: flex;
   color: #024b8d;
   font-style: normal;
@@ -96,8 +109,10 @@ export const Profileicon = styled.img`
   width: 30px;
 `;
 
-export const Profile = styled.div`
+export const Commentlist = styled.div`
   display: flex;
+
+  
 `;
 
 export const Username = styled.div`
@@ -125,7 +140,7 @@ export const Text = styled.div`
 `;
 
 export const Input = styled.input`
-  width: 700px;
+  width: 830px;
   height: 20px;
   border: none;
   padding: 0 10;
