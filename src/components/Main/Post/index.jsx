@@ -20,6 +20,7 @@ function PostBlue(props) {
           <S.PostBtn
             onClick={() => {
               navigate(`/detailpost/${list.feed_id}`);
+              postList = list;
             }}
             style={{ backgroundImage: `url(${PostImage})` }}
           >
@@ -43,6 +44,9 @@ function PostBlue(props) {
     </>
   );
 }
+let postList = [{}];
+
+export { postList };
 
 function PostWhite() {
   return (
