@@ -78,7 +78,7 @@ export const Maintext = styled.span`
   color: #024b8d;
   font-style: normal;
   font-weight: bolder;
-  font-size: 13px;
+  font-size: 15px;
   padding-right: 30px;
   line-height: 25px;
   border-bottom: 2px solid #024b8d;
