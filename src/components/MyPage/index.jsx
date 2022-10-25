@@ -1,15 +1,40 @@
 import * as S from "./styles";
 import Nav from "../Nav";
-import { Re } from "../../assets";
-import { More } from "../../assets";
-import { Left } from "../../assets";
+import { PostImageW, More, Left, Re } from "../../assets";
 import Post from "../Main/Post";
 import { useState } from "react";
 import { getAccessToken, deleteAccessToken } from "../../utils/token";
 import axios from "axios";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+function PreviewPost({ list }) {
+  const array = list.slice(0, 1);
+  const navigate = useNavigate();
+  return (
+    <>
+      {array.map((post) => (
+        <S.PostBtn
+          onClick={() => {navigate(`/detailpost/${post.feed_id}`); }}
+          style={{ backgroundImage: `url(${PostImageW})` }}
+        >
+          <S.Body>
+            <S.Title>
+              <h1>{post.title}</h1>
+            </S.Title>
+            <S.Text>
+              <p>{post.content}</p>
+            </S.Text>
+          </S.Body>
+          <S.Detail>
+            <p>{post.created_at?.match(/\d{4}-\d{2}-\d{2}/)}</p>
+          </S.Detail>
+        </S.PostBtn>
+      ))}
+    </>
+  );
+};
 
 function MyPageComponents() {
   const accessToken = getAccessToken();
@@ -18,6 +43,8 @@ function MyPageComponents() {
   const [modalPs, setModalPs] = useState(true);
   const [userId, setUserId] = useState("");
   const [userName, setUserName] = useState("");
+
+  const [myPostList, setMyPostList] = useState([]);
 
   const navigate = useNavigate();
 
@@ -34,6 +61,7 @@ function MyPageComponents() {
 
   useEffect(() => {
     getUserInfo();
+    getMyPost();
   }, [modalP]);
 
   const onDeleteAccount = async () => {
@@ -56,13 +84,18 @@ function MyPageComponents() {
 
   const [more, setMore] = useState(true);
 
+  const getMyPost = async () => {
+    await axios.get(`${BASE_URL}/feed`, {
+      headers: { Authorization: `Bearer ${accessToken}` },
+    }).then((Response) => {
+      setMyPostList(Response.data.feed_list)
+    })
+  }
+
   return (
     <S.MyPage>
       <Nav change={userId} />
       <span>
-        <S.Header>
-          <span>마이페이지</span>
-        </S.Header>
         {more === true ? (
           <S.Container>
             {modalP === true ? <ProfileDefault /> : <ProfileChange />}
@@ -81,10 +114,13 @@ function MyPageComponents() {
                   더보기<img src={More}></img>
                 </S.MoreViewBtn>
               </S.PostTitle>
-              <Post color="White" />
+              <PreviewPost list={myPostList} />
             </S.MyPost>
             <hr />
             <S.Out>
+              <Link to="/main">
+                <S.OutBtn>메인으로</S.OutBtn>
+              </Link>
               <S.OutBtn onClick={onLogout}>로그아웃</S.OutBtn>
               <S.OutBtn onClick={onDeleteAccount}>회원탈퇴</S.OutBtn>
             </S.Out>
@@ -102,10 +138,7 @@ function MyPageComponents() {
               </S.MoreViewBtn>
             </header>
             <S.Main>
-              <Post />
-              <Post />
-              <Post />
-              <Post />
+              <Post list={myPostList} />
             </S.Main>
           </S.Container>
         )}
@@ -215,7 +248,7 @@ function MyPageComponents() {
           });
       } catch (error) {
         if (error.response.status == 400) {
-          alert("이름은 4자 이상이어야 합니다.");
+          alert("이름은 4자 이하이어야 합니다.");
         }
       }
     };
