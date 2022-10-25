@@ -146,7 +146,7 @@ export const Input = styled.input`
   padding: 0 10;
   border-bottom: solid 1px #023b8d;
   font-weight: 500;
-  color: #5f7daf;
+  color: #023b8d;
   ::placeholder {
     font-family: ${Font};
     color: #5f7daf;
