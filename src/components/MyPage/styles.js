@@ -1,16 +1,17 @@
 import styled from "styled-components";
+const Font = "font-family: 'Noto Sans KR', sans-serif";
 
 export const MyPage = styled.div`
   display: flex;
   > span {
     width: 100%;
-    hight: 100%;
     padding: 0 50px;
     box-sizing: border-box;
     display: flex;
     align-items: center;
     flex-direction: column;
   }
+  overflow-y: hidden;
 `;
 
 export const Header = styled.div`
@@ -24,14 +25,15 @@ export const Header = styled.div`
 `;
 
 export const Container = styled.div`
+  margin-top: 15px;
   color: #fff;
   width: 60vw;
-  hight: 70vh;
   background-color: #024b8d;
   border: 0;
   border-radius: 10px;
-  padding: 30px 50px;
-  margin-bottom: 30px;
+  padding: 0px 50px;
+  padding-top: 30px;
+  min-height: 90vh;
 `;
 
 export const Profile = styled.div`
@@ -227,4 +229,74 @@ export const BeforePassword = styled.div`
 
 export const Main = styled.div`
   margin-top: 30px;
+`;
+
+export const PostBtn = styled.button`
+  width: 100%;
+  height: 20vh;
+  background-position: center center;
+  border: 0;
+  border-radius: 20px;
+  padding: 2%;
+  box-shadow: 0 5px 5px 0 rgb(0 0 0 / 30%);
+  display: flex;
+  margin-bottom: 5vh;
+  cursor: pointer;
+  font-family: ${Font};
+`;
+
+export const Body = styled.div`
+  width: 75%;
+  height: 100%;
+`;
+
+export const Title = styled.span`
+  width: 100%;
+  height: 30%;
+  color: #fff;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  >h1{
+    margin: 0;
+    color: #024b8d;
+  }
+`;
+
+export const Text = styled.span`
+  width: 100%;
+  height: 62%;
+  padding-top: 10px;
+  box-sizing: border-box;
+  color: #c6c6c6;
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  text-align: start;
+  font-family: ${Font};
+  @media screen and (max-height: 370px) {
+    display: none;
+  }
+  >p{
+    margin: 0;
+    font-size: 20px;
+    color: #5f7def;
+  }
+`;
+
+export const Detail = styled.span`
+  width: 25%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  box-sizing: border-box;
+  padding: 5px;
+  align-items: end;
+  color: #c6c6c6;
+  >p{
+    margin: 0;
+    font-size: 20px;
+    color: #024b8d;
+  }
 `;

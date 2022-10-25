@@ -29,7 +29,7 @@ export const Detail = styled.span`
   box-sizing: border-box;
   padding: 5px;
   align-items: end;
-  color: #c6c6c6;
+  color: black;
 `;
 
 export const Title = styled.span`
