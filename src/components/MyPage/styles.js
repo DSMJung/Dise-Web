@@ -15,7 +15,6 @@ export const MyPage = styled.div`
 `;
 
 export const Header = styled.div`
-  hight: 20vh;
   width: 100%;
   padding: 30px 0;
   > span {
@@ -197,6 +196,13 @@ export const NewPassword = styled.div`
 export const PasswordBox = styled.div`
   display: flex;
   margin-top: 20px;
+  div{
+    display: flex;
+    flex-direction: column;
+  }
+  gap: 70px;
+  margin-right: 30px;
+  margin-left: 10px;
 `;
 export const AfterPassword = styled.div`
   display: flex;
@@ -205,13 +211,20 @@ export const AfterPassword = styled.div`
   font-size: 20px;
   color: #cdcdcd;
   gap: 12px;
+  div{
+    display: flex;
+    flex-direction: column;
+  }
 `;
 export const PasswordInput = styled.input`
   background: #5f7daf;
   border: 1px solid #ffffff;
   border-radius: 5px;
-  width: 340px;
   height: 30px;
+  width: calc(20vw - 5px);
+  outline: none;
+  color: #024B8D;
+  padding-left: 5px;
 `;
 export const BeforePassword = styled.div`
   display: flex;
@@ -280,7 +293,7 @@ export const Text = styled.span`
   >p{
     margin: 0;
     font-size: 20px;
-    color: #5f7def;
+    color: #5F7DAF;
   }
 `;
 
