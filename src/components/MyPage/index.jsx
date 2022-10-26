@@ -16,7 +16,7 @@ function PreviewPost({ list }) {
     <>
       {array.map((post) => (
         <S.PostBtn
-          onClick={() => {navigate(`/detailpost/${post.feed_id}`); }}
+          onClick={() => { navigate(`/detailpost/${post.feed_id}`); }}
           style={{ backgroundImage: `url(${PostImageW})` }}
         >
           <S.Body>
@@ -62,7 +62,7 @@ function MyPageComponents() {
   useEffect(() => {
     getUserInfo();
     getMyPost();
-  }, [modalP]);
+  }, [modalP | modalPs]);
 
   const onDeleteAccount = async () => {
     await axios
@@ -204,6 +204,44 @@ function MyPageComponents() {
   }
 
   function PasswordChange() {
+    const [beforePassword, setBeforePassword] = useState("");
+    const [afterPassword, setAfterPassword] = useState("");
+    const [checkAfterPassword, setChecktAfterPassword] = useState("");
+
+    const revisePassword = async () => {
+      if (afterPassword === checkAfterPassword) {
+        try {
+          await axios
+            .patch(
+              `${BASE_URL}/user`,
+              {
+                password: beforePassword,
+                new_password: afterPassword,
+                check_password: checkAfterPassword
+              },
+              {
+                headers: { Authorization: `Bearer ${accessToken}` },
+              }
+            )
+            .then(() => {
+              alert("비밀번호가 바뀌었습니다.");
+              setModalPs(!modalPs);
+            });
+        } catch (error) {
+          console.log(error.response);
+          if (error.response.status === 400) {
+            alert("새 비밀번호는 소문자, 숫자, 특수문자가 포함되어야 하며 8자 이상 20자 이하여야 합니다.");
+          }
+          else if (error.response.status === 401) {
+            alert("현재 비밀번호가 틀렸습니다.");
+          }
+        }
+      }
+      else {
+        alert("새 비밀번호가 일치하지 않습니다.");
+      }
+    }
+
     return (
       <S.NewPassword>
         <S.PasswordBox>
@@ -211,21 +249,32 @@ function MyPageComponents() {
             <span>비밀번호</span>
             <div>
               이전 비밀번호
-              <S.PasswordInput />
+              <S.PasswordInput onChange={(e) => setBeforePassword(e.target.value)} />
             </div>
           </S.BeforePassword>
           <S.AfterPassword>
             <div>
               새 비밀번호
-              <S.PasswordInput />
+              <S.PasswordInput onChange={(e) => setAfterPassword(e.target.value)} />
             </div>
             <div>
               새 비밀번호 확인
-              <S.PasswordInput />
+              <S.PasswordInput onChange={(e) => setChecktAfterPassword(e.target.value)} />
             </div>
           </S.AfterPassword>
         </S.PasswordBox>
-        <RemoveChange name={"pw"} />
+        <S.RemoveChange>
+          <S.ChangeBtn
+            onClick={() => {
+              setModalPs(!modalPs);
+            }}
+          >
+            취소
+          </S.ChangeBtn>
+          <S.ChangeBtn onClick={revisePassword}>
+            변경
+          </S.ChangeBtn>
+        </S.RemoveChange>
       </S.NewPassword>
     );
   }
@@ -252,43 +301,20 @@ function MyPageComponents() {
         }
       }
     };
-
-    if (props.name === "prof")
-      return (
-        <S.RemoveChange>
-          <S.ChangeBtn
-            onClick={() => {
-              setModalP(!modalP);
-            }}
-          >
-            취소
-          </S.ChangeBtn>
-          <S.ChangeBtn // 기능구현때 여기 바꿔야함
-            onClick={reviseUserInfo}
-          >
-            변경
-          </S.ChangeBtn>
-        </S.RemoveChange>
-      );
-    else
-      return (
-        <S.RemoveChange>
-          <S.ChangeBtn
-            onClick={() => {
-              setModalPs(!modalPs);
-            }}
-          >
-            취소
-          </S.ChangeBtn>
-          <S.ChangeBtn // 기능구현때 여기 바꿔야함
-            onClick={() => {
-              setModalPs(!modalPs);
-            }}
-          >
-            변경
-          </S.ChangeBtn>
-        </S.RemoveChange>
-      );
+    return (
+      <S.RemoveChange>
+        <S.ChangeBtn
+          onClick={() => {
+            setModalP(!modalP);
+          }}
+        >
+          취소
+        </S.ChangeBtn>
+        <S.ChangeBtn onClick={reviseUserInfo}>
+          변경
+        </S.ChangeBtn>
+      </S.RemoveChange >
+    );
   }
 }
 
