@@ -17,6 +17,8 @@ function DetailPost() {
   const [commentlist, setcommentlist] = useState([{}]);
 
   const postComment = async (e) => {
+    window.location.reload();
+    
     await axios
       .post(
         `${BASE_URL}/comment/${id}`,
@@ -28,13 +30,13 @@ function DetailPost() {
         }
       )
       .then((response) => {
-        console.log(response);
+    
       })
       .catch((error) => {
-        console.log(error);
+        
 
-        if (!S.Input.value) alert("내용을 입력해 주세요!");
-        setComment("");
+        if (!accessToken) alert("로그인을 해주세요!");
+        else if (accessToken && !S.Input.value) alert("내용을 입력해 주세요");
       });
   };
 
