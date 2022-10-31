@@ -105,11 +105,13 @@ export const Commenttext = styled.div`
 `;
 
 export const Profileicon = styled.img`
+
   display: flex;
   width: 30px;
 `;
 
 export const Commentlist = styled.div`
+align-items: flex-start;
   display: flex;
 
   
@@ -132,11 +134,14 @@ export const Comment = styled.div`
   font-size: 14px;
   margin-left: 9px;
   display: flex;
-  height: 14px;
+  height: auto;
   line-height: 25px;
+  white-space: normal;
+  width: 800px;
 `;
 export const Text = styled.div`
-  flex-direction: column;
+width: 868px;
+  
 `;
 
 export const Input = styled.input`
@@ -160,3 +165,18 @@ export const PlusButton = styled.img`
   width: 25px;
   margin-left: 13px;
 `;
+
+
+export const  Remove=styled.div`
+display: flex;
+
+margin-top: 13px;
+`
+        
+export const EditButton=styled.img`
+width: 18px;
+`
+export const DeleteButton=styled.img`
+width: 18px;
+margin-left: 12px;
+`

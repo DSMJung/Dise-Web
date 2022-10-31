@@ -2,7 +2,14 @@ import * as S from "./styles";
 import Header from "../Main/Header";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { MessageIcon, ProfileIcon, PlusIcon } from "../../assets";
+import {
+  MessageIcon,
+  ProfileIcon,
+  PlusIcon,
+  Delete,
+  Edit,
+  SettingIcon,
+} from "../../assets";
 import Nav from "../Nav";
 import axios from "axios";
 import { getAccessToken } from "../../utils/token";
@@ -18,7 +25,7 @@ function DetailPost() {
 
   const postComment = async (e) => {
     window.location.reload();
-    
+
     await axios
       .post(
         `${BASE_URL}/comment/${id}`,
@@ -29,12 +36,8 @@ function DetailPost() {
           headers: { Authorization: `Bearer ${accessToken}` },
         }
       )
-      .then((response) => {
-    
-      })
+      .then((response) => {})
       .catch((error) => {
-        
-
         if (!accessToken) alert("로그인을 해주세요!");
         else if (accessToken && !S.Input.value) alert("내용을 입력해 주세요");
       });
@@ -84,7 +87,8 @@ function DetailPost() {
               <S.Input
                 placeholder="댓글추가"
                 type="text"
-                onChange={(e) => setComment(e.target.value)}
+                onChange={(e) => setComment(e.target.value)
+                }
               />
               <S.PlusButton src={PlusIcon} onClick={postComment} />
             </div>
@@ -95,6 +99,10 @@ function DetailPost() {
                   <S.Username>{list.name}</S.Username>
                   <S.Comment>{list.content}</S.Comment>
                 </S.Text>
+                <S.Remove>
+                  <S.EditButton src={Edit}></S.EditButton>
+                  <S.DeleteButton src={Delete}></S.DeleteButton>
+                </S.Remove>
               </S.Commentlist>
             ))}
           </S.Container>
