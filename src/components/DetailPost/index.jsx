@@ -1,14 +1,14 @@
 import * as S from "./styles";
 import Header from "../Main/Header";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   MessageIcon,
   ProfileIcon,
   PlusIcon,
   Delete,
   Edit,
-  SettingIcon,
+  ModalBtn,
 } from "../../assets";
 import Nav from "../Nav";
 import axios from "axios";
@@ -22,6 +22,9 @@ function DetailPost() {
   const [comment, setComment] = useState("");
   const accessToken = getAccessToken();
   const [commentlist, setcommentlist] = useState([{}]);
+  const [modal, setModal] = useState(false);
+
+  const navi = useNavigate();
 
   const postComment = async (e) => {
     window.location.reload();
@@ -61,6 +64,55 @@ function DetailPost() {
     commentArr();
   }, []);
 
+  const [edit, setEdit] = useState(true);
+
+  const EditContent = () => {
+    setTitle(list.title);
+    setText(list.content);
+    setEdit(!edit);
+  };
+
+  const DeleteContent = () => {};
+
+  const [title, setTitle] = useState("");
+  const [text, setText] = useState("");
+
+  const onChangeTitle = (e) => {
+    setTitle(e.target.value);
+  };
+  const onChangeText = (e) => {
+    setText(e.target.value);
+  };
+
+  const EditPost = async () => {
+    console.log(title);
+    console.log(text);
+    await axios
+      .put(
+        `${BASE_URL}/feed/${id}`,
+        {
+          title: title,
+          content: text,
+          category: "FRONTEND",
+        },
+        {
+          headers: { Authorization: `Bearer ${accessToken}` },
+        }
+      )
+      .then(() => {
+        setEdit(!edit);
+        setModal(!modal);
+        console.log(list);
+        alert("수정이 완료되었습니다.", "감사합니다.");
+      })
+      .catch((error) => {
+        switch (error.response.status) {
+          case 400:
+            alert("수정할 수 없습니다.\n내용을 다시 한 번 확인해 주세요.");
+        }
+      });
+  };
+
   return (
     <>
       <div style={{ display: "flex" }}>
@@ -71,13 +123,60 @@ function DetailPost() {
           </div>
           <S.Container>
             <div>
-              <S.Title>{list.title}</S.Title>
+              <S.Title>
+                {edit ? (
+                  list.title
+                ) : (
+                  <input onChange={onChangeTitle} value={title} />
+                )}
+              </S.Title>
               <S.UsernameT>{list.user_name}</S.UsernameT>
               <S.Datetext>
                 {list.created_at?.match(/\d{4}-\d{2}-\d{2}/)}
               </S.Datetext>
             </div>
-            <S.Maintext>{list.content}</S.Maintext>
+            <S.Maintext>
+              {edit ? (
+                list.content
+              ) : (
+                <textarea onChange={onChangeText} value={text} />
+              )}
+              {1 && (
+                <S.ModalBtn>
+                  {edit ? (
+                    <>
+                      {modal && (
+                        <S.Modal__div>
+                          <S.Modal_btn__btn
+                            className="edit"
+                            onClick={EditContent}
+                          >
+                            <img src={Edit} />
+                            <span>수정</span>
+                          </S.Modal_btn__btn>
+                          <S.Modal_btn__btn
+                            className="delete"
+                            onClick={DeleteContent}
+                          >
+                            <img src={Delete} />
+                            <span>삭제</span>
+                          </S.Modal_btn__btn>
+                        </S.Modal__div>
+                      )}
+                      <button
+                        onClick={() => {
+                          setModal(!modal);
+                        }}
+                      >
+                        <img src={ModalBtn} />
+                      </button>
+                    </>
+                  ) : (
+                    <S.SaveBtn onClick={EditPost}>저장</S.SaveBtn>
+                  )}
+                </S.ModalBtn>
+              )}
+            </S.Maintext>
             <S.Commentbox>
               <S.Messageicon src={MessageIcon} />
               <S.Commenttext>댓글</S.Commenttext>
@@ -87,8 +186,7 @@ function DetailPost() {
               <S.Input
                 placeholder="댓글추가"
                 type="text"
-                onChange={(e) => setComment(e.target.value)
-                }
+                onChange={(e) => setComment(e.target.value)}
               />
               <S.PlusButton src={PlusIcon} onClick={postComment} />
             </div>

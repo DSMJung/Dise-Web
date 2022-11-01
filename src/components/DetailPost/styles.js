@@ -31,7 +31,7 @@ export const Container = styled.div`
   border-radius: 5px;
   margin-left: 61px;
   overflow-y: scroll;
-  
+
   /* .Container::-webkit-scrollbar {
     width: 10px;
   }
@@ -53,6 +53,12 @@ export const Title = styled.div`
   color: #024b8d;
   display: flex;
   margin-bottom: 10px;
+  > input {
+    height: 40px;
+    width: 100%;
+    font-size: 27px;
+    font-weight: 600;
+  }
 `;
 
 export const UsernameT = styled.div`
@@ -83,6 +89,52 @@ export const Maintext = styled.span`
   line-height: 25px;
   border-bottom: 2px solid #024b8d;
   overflow: hidden;
+  flex-direction: column;
+  justify-content: space-between;
+  > textarea {
+    width: 100%;
+    height: 100%;
+    font-weight: 600;
+  }
+`;
+
+export const ModalBtn = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-bottom: 10px;
+  gap: 15px;
+  > button {
+    background-color: transparent;
+    border: 0;
+  }
+  }
+`;
+
+export const SaveBtn = styled.button`
+  width: 80px;
+  height: 30px;
+  border-radius: 5px;
+  &:hover {
+    border: 1px solid #024b8d;
+  }
+`;
+
+export const Modal__div = styled.div`
+  background-color: #f5f5f5;
+  border: 2px solid #7f7f7f;
+  border-radius: 5px;
+  color: #000;
+  display: flex;
+`;
+
+export const Modal_btn__btn = styled.button`
+  padding: 5px 10px;
+  border: 0;
+  background-color: transparent;
+  > img {
+    width: 15px;
+  }
 `;
 
 export const Commentbox = styled.span`
@@ -113,8 +165,6 @@ export const Profileicon = styled.img`
 export const Commentlist = styled.div`
 align-items: flex-start;
   display: flex;
-
-  
 `;
 
 export const Username = styled.div`

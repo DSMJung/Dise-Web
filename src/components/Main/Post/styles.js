@@ -55,4 +55,5 @@ export const Text = styled.span`
   @media screen and (max-height: 370px) {
     display: none;
   }
+  overflow: hitden;
 `;

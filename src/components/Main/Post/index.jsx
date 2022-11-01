@@ -5,7 +5,11 @@ import { useNavigate } from "react-router-dom";
 function Post(props) {
   return (
     <>
-      {props.color === "Blue" ? <PostBlue list={props.list} /> : <PostWhite list={props.list} />}
+      {props.color === "Blue" ? (
+        <PostBlue list={props.list} />
+      ) : (
+        <PostWhite list={props.list} />
+      )}
     </>
   );
 }
@@ -56,7 +60,9 @@ function PostWhite(props) {
     <>
       {list.map((list) => (
         <S.PostBtn
-          onClick={() => {navigate(`/detailpost/${list.feed_id}`); }}
+          onClick={() => {
+            navigate(`/detailpost/${list.feed_id}`);
+          }}
           style={{ backgroundImage: `url(${PostImageW})` }}
         >
           <S.Body>
@@ -64,7 +70,9 @@ function PostWhite(props) {
               <h1 style={{ margin: 0, color: "#024b8d" }}>{list.title}</h1>
             </S.Title>
             <S.Text>
-              <p style={{ margin: 0, fontSize: 20, color: "#5F7DAF" }}>{list.content}</p>
+              <p style={{ margin: 0, fontSize: 20, color: "#5F7DAF" }}>
+                {list.content}
+              </p>
             </S.Text>
           </S.Body>
           <S.Detail>
