@@ -2,14 +2,7 @@ import * as S from "./styles";
 import Header from "../Main/Header";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import {
-  MessageIcon,
-  ProfileIcon,
-  PlusIcon,
-  Delete,
-  Edit,
-  SettingIcon,
-} from "../../assets";
+import { MessageIcon, ProfileIcon, PlusIcon, Delete, Edit } from "../../assets";
 import Nav from "../Nav";
 import axios from "axios";
 import { getAccessToken } from "../../utils/token";
@@ -17,6 +10,8 @@ import { getAccessToken } from "../../utils/token";
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 function DetailPost() {
+  // const { commentId } = useParams();
+  
   const { id } = useParams();
   const [list, setList] = useState([{}]);
   const [comment, setComment] = useState("");
@@ -51,7 +46,6 @@ function DetailPost() {
 
   const commentArr = async () => {
     await axios.get(`${BASE_URL}/comment/${id}`).then((Response) => {
-      console.log(Response);
       setcommentlist(Response.data.comment_list);
     });
   };
@@ -61,6 +55,26 @@ function DetailPost() {
     commentArr();
   }, []);
 
+  // const commentDelete = async (id) => {
+  //   await axios.delete(`${BASE_URL}/comment/${id}`).then(() => {
+  //     return setcommentlist(commentlist.filter((comment) => comment.id !== id));
+  //   });
+  // };
+
+  // function RemoveChange() {
+  //   return id == commentId ? (
+  //     <S.Remove>
+  //       <S.EditButton src={Edit}></S.EditButton>
+  //       <S.DeleteButton
+  //         onClick={commentDelete(commentId)}
+  //         src={Delete}
+  //       ></S.DeleteButton>
+  //     </S.Remove>
+  //   ) : null;
+  // }
+  // console.log(list);
+
+  
   return (
     <>
       <div style={{ display: "flex" }}>
@@ -87,8 +101,7 @@ function DetailPost() {
               <S.Input
                 placeholder="댓글추가"
                 type="text"
-                onChange={(e) => setComment(e.target.value)
-                }
+                onChange={(e) => setComment(e.target.value)}
               />
               <S.PlusButton src={PlusIcon} onClick={postComment} />
             </div>
@@ -99,10 +112,6 @@ function DetailPost() {
                   <S.Username>{list.name}</S.Username>
                   <S.Comment>{list.content}</S.Comment>
                 </S.Text>
-                <S.Remove>
-                  <S.EditButton src={Edit}></S.EditButton>
-                  <S.DeleteButton src={Delete}></S.DeleteButton>
-                </S.Remove>
               </S.Commentlist>
             ))}
           </S.Container>

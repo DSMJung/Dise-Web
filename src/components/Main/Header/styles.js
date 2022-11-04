@@ -34,3 +34,7 @@ export const searchInput = styled.input`
   outline: none;
   background: transparent;
 `;
+export const button=styled.button`
+border: none;
+background-color: transparent;
+`

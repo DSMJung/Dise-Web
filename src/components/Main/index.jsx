@@ -12,11 +12,10 @@ const BASE_URL = process.env.REACT_APP_BASE_URL;
 function Main() {
   const [list, setList] = useState([]);
   const navigate = useNavigate();
+
   const Get = async () => {
     await axios.get(`${BASE_URL}/feed/list`).then((Response) => {
-      console.log(Response);
       setList(Response.data.feed_list);
-      console.log(list);
     });
   };
 
@@ -40,7 +39,7 @@ function Main() {
               </S.WritingBtn>
             </S.MainHeader>
             <S.PostList>
-              <Post color="Blue" list={list} />
+              <Post color="Blue" list={list}/>
             </S.PostList>
           </S.Main>
         </S.Body>

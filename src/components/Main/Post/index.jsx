@@ -2,6 +2,7 @@ import * as S from "./styles";
 import { PostImage, PostImageW } from "../../../assets";
 import { useNavigate } from "react-router-dom";
 
+
 function Post(props) {
   return (
     <>
@@ -10,9 +11,12 @@ function Post(props) {
   );
 }
 
+
+  
 function PostBlue(props) {
   const navigate = useNavigate();
   const list = props.list;
+
   return (
     <>
       {list.map((list) => (
@@ -20,7 +24,6 @@ function PostBlue(props) {
           <S.PostBtn
             onClick={() => {
               navigate(`/detailpost/${list.feed_id}`);
-              postList = list;
             }}
             style={{ backgroundImage: `url(${PostImage})` }}
           >
@@ -44,9 +47,6 @@ function PostBlue(props) {
     </>
   );
 }
-let postList = [{}];
-
-export { postList };
 
 function PostWhite() {
   return (
